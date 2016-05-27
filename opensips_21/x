@@ -1,0 +1,24 @@
+diff --git a/menuconfig/configs/opensips_residential_def.m4 b/menuconfig/configs/opensips_residential_def.m4
+index 3f7fd27..2df6332 100644
+--- a/menuconfig/configs/opensips_residential_def.m4
++++ b/menuconfig/configs/opensips_residential_def.m4
+@@ -1,5 +1,5 @@
+ divert(-1)
+-define(`ENABLE_TCP', `no') # OpenSIPS will listen on TCP for SIP requests
++define(`ENABLE_TCP', `yes') # OpenSIPS will listen on TCP for SIP requests
+ define(`ENABLE_TLS', `no') # OpenSIPS will listen on TLS for SIP requests
+ define(`USE_ALIASES', `no') # OpenSIPS will allow the use of Aliases for SIP users
+ define(`USE_AUTH', `no') # OpenSIPS will authenticate Register & Invite requests
+diff --git a/packaging/debian/opensips.init b/packaging/debian/opensips.init
+index 3a450a6..0fac15f 100644
+--- a/packaging/debian/opensips.init
++++ b/packaging/debian/opensips.init
+@@ -28,7 +28,7 @@ DEFAULTS=/etc/default/opensips
+ RUN_OPENSIPS=no
+ 
+ 
+-[-e "/lib/lsb/init-functions" ] && . /lib/lsb/init-functions
++[ -e "/lib/lsb/init-functions" ] && . /lib/lsb/init-functions
+ 
+ # Do not start opensips if fork=no is set in the config file
+ # otherwise the boot process will just stop
